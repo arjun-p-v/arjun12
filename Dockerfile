@@ -1,6 +1,7 @@
-FROM python:3.9 
-# Or any preferred Python version.
-ADD app.py .
-RUN pip install requests beautifulsoup4 python-dotenv
-CMD [“python”, “./app.py”] 
-# Or enter the name of your unique directory and parameter set.
+FROM python:alpine3.7
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+EXPOSE 5001
+ENTRYPOINT [ "python" ]
+CMD [ "demo.py" ]
